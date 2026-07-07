@@ -1,0 +1,246 @@
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/effect-fade';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Reset ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #ffffff;
+  color: #1F2937;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #1E5AA8;
+  color: #ffffff;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: #F5F7FA; }
+::-webkit-scrollbar-thumb  { background: #C8A96A; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #A8893A; }
+
+/* ── Typography Utilities ── */
+@layer components {
+  .font-display { font-family: 'Playfair Display', Georgia, serif; }
+
+  .heading-xl {
+    @apply font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight;
+  }
+  .heading-lg {
+    @apply font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
+  }
+  .heading-md {
+    @apply font-display text-2xl md:text-3xl font-semibold leading-tight;
+  }
+  .heading-sm {
+    @apply font-display text-xl md:text-2xl font-semibold;
+  }
+  .text-balance { text-wrap: balance; }
+
+  /* ── Luxury Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 bg-royal text-white font-semibold text-sm
+           rounded-full transition-all duration-300 hover:bg-[#163d78] hover:shadow-luxury
+           hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none
+           focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2;
+  }
+  .btn-gold {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-white font-semibold text-sm
+           rounded-full transition-all duration-300 hover:bg-gold-dark hover:shadow-gold
+           hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 border-2 border-royal text-royal
+           font-semibold text-sm rounded-full transition-all duration-300
+           hover:bg-royal hover:text-white hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-6 py-3 text-text-secondary font-medium text-sm
+           rounded-full border border-border transition-all duration-300
+           hover:border-royal hover:text-royal hover:bg-pearl;
+  }
+
+  /* ── Cards ── */
+  .card-luxury {
+    @apply bg-white rounded-3xl shadow-card border border-border/60
+           transition-all duration-500 hover:shadow-card-hover hover:-translate-y-1;
+  }
+  .card-glass {
+    @apply backdrop-blur-xl bg-white/80 border border-white/60 rounded-3xl shadow-card;
+  }
+
+  /* ── Section Spacing ── */
+  .section-padding { @apply py-20 md:py-28 lg:py-36; }
+  .container-luxury { @apply max-width mx-auto px-4 sm:px-6 lg:px-8 xl:px-12; }
+
+  /* ── Gold Accent Line ── */
+  .gold-line {
+    @apply inline-block h-1 w-12 bg-gold rounded-full;
+  }
+  .gold-label {
+    @apply inline-flex items-center gap-2 text-gold font-semibold text-xs tracking-widest uppercase;
+  }
+
+  /* ── Shimmer Effect ── */
+  .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* ── Number Counter ── */
+  .counter-value {
+    @apply font-display text-5xl md:text-6xl font-bold text-royal tabular-nums;
+  }
+}
+
+/* ── Max Width Container ── */
+.max-width {
+  max-width: 1320px;
+}
+
+/* ── Swiper Overrides ── */
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: #C8A96A !important;
+  opacity: 0.4 !important;
+  transition: all 0.3s !important;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  width: 32px !important;
+  border-radius: 4px !important;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  width: 48px !important;
+  height: 48px !important;
+  background: white !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
+  color: #1E5AA8 !important;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+/* ── Blob Shapes ── */
+.blob-1 {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: blob 12s ease-in-out infinite;
+}
+.blob-2 {
+  border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  animation: blob 14s ease-in-out infinite reverse;
+}
+
+/* ── Gradient Text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #1E5AA8 0%, #4B6A88 50%, #C8A96A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-gold {
+  background: linear-gradient(135deg, #C8A96A 0%, #D9BE8A 50%, #A8893A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Image Zoom Hover ── */
+.img-zoom { overflow: hidden; }
+.img-zoom img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-zoom:hover img { transform: scale(1.08); }
+
+/* ── FAQ Accordion ── */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.4s ease;
+}
+.faq-content.open { max-height: 400px; }
+
+/* ── Scroll Indicator ── */
+.scroll-indicator {
+  animation: scrollIndicator 2s ease-in-out infinite;
+}
+@keyframes scrollIndicator {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(8px); opacity: 0.4; }
+}
+
+/* ── Loading Screen ── */
+.loader-bar {
+  animation: loaderProgress 1.8s ease-out forwards;
+}
+@keyframes loaderProgress {
+  0%   { width: 0%; }
+  60%  { width: 75%; }
+  100% { width: 100%; }
+}
+
+/* ── Hero Gradient Overlay ── */
+.hero-overlay {
+  background: linear-gradient(
+    105deg,
+    rgba(30,90,168,0.82) 0%,
+    rgba(30,90,168,0.60) 40%,
+    rgba(0,0,0,0.35) 100%
+  );
+}
+
+/* ── Back to Top ── */
+.back-to-top {
+  @apply fixed bottom-8 right-8 z-50 w-12 h-12 bg-royal text-white rounded-full
+         flex items-center justify-center shadow-luxury transition-all duration-300
+         hover:bg-gold hover:shadow-gold hover:-translate-y-1;
+}
+
+/* ── Section Divider ── */
+.divider-luxury {
+  @apply flex items-center gap-4 mb-4;
+}
+
+/* ── Floating Decorative Elements ── */
+.float-element {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ── Vehicle Card Badge ── */
+.badge-gold {
+  @apply inline-flex items-center gap-1 px-3 py-1 bg-gold/10 text-gold
+         text-xs font-semibold rounded-full border border-gold/20;
+}
+
+/* ── Media: reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
